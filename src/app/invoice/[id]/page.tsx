@@ -86,15 +86,26 @@ export default function ViewInvoice() {
   const handleDownloadPDF = async () => {
     if (!contentRef.current) return;
     const element = contentRef.current;
+    
+    // Temporarily remove margin for html2canvas
+    const originalMargin = element.style.marginTop;
+    element.style.marginTop = '0px';
+
     const opt = {
       margin: 0,
       filename: `invoice-${invoice?.invoiceNumber || 'download'}.pdf`,
       image: { type: 'jpeg' as const, quality: 0.98 },
-      html2canvas: { scale: 2 },
+      html2canvas: { scale: 2, windowWidth: 1200 },
       jsPDF: { unit: 'mm' as const, format: 'a4' as const, orientation: 'portrait' as const },
     };
-    const html2pdf = (await import('html2pdf.js')).default;
-    html2pdf().set(opt).from(element).save();
+    
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      await html2pdf().set(opt).from(element).save();
+    } finally {
+      // Restore the margin
+      element.style.marginTop = originalMargin;
+    }
   };
 
   // Submit payment update to backend
