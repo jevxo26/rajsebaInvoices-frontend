@@ -70,11 +70,6 @@ export const InvoiceTemplate1: React.FC<InvoiceTemplateProps> = ({
 
   return (
     <div className="rds-invoice-container">
-      {paymentStatus && (
-        <div className={`invoice-badge ${paymentStatus.toLowerCase()}`}>
-          {paymentStatus.toUpperCase()}
-        </div>
-      )}
       {/* Top Header */}
       <div className="rds-header">
         <div className="rds-logo-section">
@@ -94,6 +89,12 @@ export const InvoiceTemplate1: React.FC<InvoiceTemplateProps> = ({
           </div>
         </div>
       </div>
+
+      {paymentStatus && (
+        <div className={`invoice-badge ${paymentStatus.toLowerCase()}`}>
+          {paymentStatus.toUpperCase()}
+        </div>
+      )}
 
       <hr className="rds-divider" />
 

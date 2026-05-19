@@ -1141,6 +1141,11 @@ h6 {
   font-weight: 600 !important;
 }
 
+.invoice-render-wrapper {
+  background: transparent;
+  margin-top: 100px;
+}
+
 /* ==========================================
    PRINT MEDIA QUERIES (A4 PRINT OPTIMIZATIONS)
    ========================================== */
@@ -1163,6 +1168,10 @@ h6 {
   .invoice-control-panel,
   .invoice-actions-top {
     display: none !important;
+  }
+
+  .invoice-render-wrapper {
+    margin-top: 0 !important;
   }
 
   /* Reset document background */

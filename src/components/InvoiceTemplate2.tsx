@@ -70,11 +70,6 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
 
   return (
     <div className="partner-invoice-container">
-      {paymentStatus && (
-        <div className={`invoice-badge ${paymentStatus.toLowerCase()}`}>
-          {paymentStatus.toUpperCase()}
-        </div>
-      )}
       {/* Top Header Section */}
       <div className="partner-header">
         {/* Left: Logo Brand */}
@@ -111,6 +106,12 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
           </div>
         </div>
       </div>
+
+      {paymentStatus && (
+        <div className={`invoice-badge ${paymentStatus.toLowerCase()}`}>
+          {paymentStatus.toUpperCase()}
+        </div>
+      )}
 
       {/* Invoice Title */}
       <div className="partner-title-box">

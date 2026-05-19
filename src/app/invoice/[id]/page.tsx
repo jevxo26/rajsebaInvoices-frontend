@@ -267,7 +267,7 @@ export default function ViewInvoice() {
       </div>
 
       {/* High Fidelity Template Rendering */}
-      <div ref={contentRef} style={{ background: 'transparent', marginTop: '100px' }}>
+      <div ref={contentRef} className="invoice-render-wrapper">
         {invoice.templateName === 'template1' ? (
           <InvoiceTemplate1
             invoiceNumber={invoice.invoiceNumber}
