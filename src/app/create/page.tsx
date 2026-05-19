@@ -59,11 +59,11 @@ export default function CreateInvoice() {
   const [signeeRole, setSigneeRole] = useState('CEO, Rajseba Design Studio');
 
   const [paymentOptions, setPaymentOptions] = useState({
-    accountName: '',
-    accountNumber: '',
-    bankName: '',
-    branch: '',
-    routingNumber: ''
+    accountName: 'RAJSEBA.COM',
+    accountNumber: '02433002451',
+    bankName: 'Bank Asia PLC',
+    branch: 'Rajshahi Branch',
+    routingNumber: '070811937'
   });
 
   const [paymentStatus, setPaymentStatus] = useState<'Paid' | 'Due'>('Due');

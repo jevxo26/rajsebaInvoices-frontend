@@ -790,7 +790,7 @@ h6 {
 
 .rds-footer-illustration {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   right: 20px;
   width: 280px;
   opacity: 0.85;
@@ -1059,6 +1059,7 @@ h6 {
 
 .partner-signature-block {
   min-width: 180px;
+  text-align: center;
 }
 
 .partner-signature-block p {
@@ -1067,9 +1068,10 @@ h6 {
 
 .partner-sig-img {
   height: 40px;
-  margin: 5px 0;
+  margin: 5px auto;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .partner-signee-name {
@@ -1236,7 +1238,7 @@ h6 {
 
   .rds-footer-illustration {
     position: fixed !important;
-    bottom: 12mm !important;
+    bottom: 8mm !important;
     right: 20mm !important;
     width: 280px !important;
     opacity: 0.9 !important;

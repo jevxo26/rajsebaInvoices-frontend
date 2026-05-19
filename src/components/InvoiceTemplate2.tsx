@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface InvoiceItem {
@@ -86,21 +87,21 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
         <div className="partner-contact-banner">
           <div className="partner-contact-item">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
             <span>+8801813333373</span>
           </div>
           <div className="partner-contact-item">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
             </svg>
             <span>info@rajseba.com</span>
           </div>
           <div className="partner-contact-item partner-address">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
             <span>5th floor, Incubation and Training Center, Rajshahi Hi-Tech Park, Rajshahi.</span>
           </div>
@@ -222,9 +223,7 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
           <p>Sincerely,</p>
           <div className="partner-sig-img">
             {/* Elegant Signature Drawing in SVG */}
-            <svg width="100" height="40" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 25C18 22 25 12 28 10C32 8 36 24 34 28C32 32 22 35 24 28C27 18 45 15 48 12C51 10 55 20 53 24C51 28 60 18 64 16C68 14 72 22 74 25" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <Image src="/signature.png" alt="Signature" width={150} height={100} />
           </div>
           <p className="partner-signee-name">{signeeName}</p>
           <p className="partner-signee-role">{signeeRole}</p>
@@ -235,18 +234,18 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
       <div className="partner-ribbon-footer">
         <svg viewBox="0 0 800 60" preserveAspectRatio="none" className="partner-ribbon-svg" xmlns="http://www.w3.org/2000/svg">
           {/* Blue triangles */}
-          <polygon points="0,20 120,60 0,60" fill="#3b82f6"/>
-          <polygon points="120,60 220,15 280,60" fill="#2563eb"/>
+          <polygon points="0,20 120,60 0,60" fill="#3b82f6" />
+          <polygon points="120,60 220,15 280,60" fill="#2563eb" />
           {/* Orange triangle accents */}
-          <polygon points="200,60 235,30 270,60" fill="#f97316"/>
+          <polygon points="200,60 235,30 270,60" fill="#f97316" />
           {/* Main bottom long stripes */}
-          <polygon points="260,60 400,0 520,60" fill="#3b82f6"/>
-          <polygon points="380,60 430,25 480,60" fill="#ea580c"/>
-          <polygon points="460,60 580,10 650,60" fill="#2563eb"/>
-          <polygon points="560,60 610,25 660,60" fill="#f97316"/>
-          <polygon points="630,60 800,0 800,60" fill="#3b82f6"/>
+          <polygon points="260,60 400,0 520,60" fill="#3b82f6" />
+          <polygon points="380,60 430,25 480,60" fill="#ea580c" />
+          <polygon points="460,60 580,10 650,60" fill="#2563eb" />
+          <polygon points="560,60 610,25 660,60" fill="#f97316" />
+          <polygon points="630,60 800,0 800,60" fill="#3b82f6" />
           {/* Full bottom baseline bar */}
-          <rect x="0" y="52" width="800" height="8" fill="#2563eb"/>
+          <rect x="0" y="52" width="800" height="8" fill="#2563eb" />
         </svg>
       </div>
     </div>
