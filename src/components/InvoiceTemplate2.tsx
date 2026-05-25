@@ -29,6 +29,7 @@ interface InvoiceTemplateProps {
   customer: Customer;
   items: InvoiceItem[];
   totalAmount: number;
+  discount?: number;
   totalPayableAmount: number;
   amountInWords: string;
   paymentOptions?: PaymentOptions;
@@ -45,6 +46,7 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
   customer,
   items,
   totalAmount,
+  discount = 0,
   totalPayableAmount,
   amountInWords,
   paymentOptions = {
@@ -175,9 +177,22 @@ export const InvoiceTemplate2: React.FC<InvoiceTemplateProps> = ({
         </table>
       </div>
 
-      {/* Payment Summary Box */}
       <div className="partner-summary-box">
         <h4>Payment Summary:</h4>
+        {discount > 0 && (
+          <>
+            <div className="partner-summary-row">
+              <span className="partner-sum-dot">•</span>
+              <span className="partner-sum-label">Subtotal:</span>
+              <span className="partner-sum-val">{totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</span>
+            </div>
+            <div className="partner-summary-row">
+              <span className="partner-sum-dot">•</span>
+              <span className="partner-sum-label">Discount:</span>
+              <span className="partner-sum-val">{discount.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</span>
+            </div>
+          </>
+        )}
         <div className="partner-summary-row">
           <span className="partner-sum-dot">•</span>
           <span className="partner-sum-label">Total Payable Amount:</span>

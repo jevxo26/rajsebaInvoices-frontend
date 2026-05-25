@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     await connectDB();
     const body = await req.json();
     const {
-      invoiceNumber, date, customer, items, totalAmount, totalPayableAmount,
+      invoiceNumber, date, customer, items, totalAmount, discount, totalPayableAmount,
       amountInWords, templateName, paymentOptions, signeeName, signeeRole,
       paidAmount, dueAmount, paymentStatus
     } = body;
@@ -73,6 +73,7 @@ export async function POST(req: Request) {
         amount: Number(item.amount || (item.qty * item.rate))
       })),
       totalAmount: Number(totalAmount || items.reduce((acc: number, curr: any) => acc + (curr.qty * curr.rate), 0)),
+      discount: Number(discount) || 0,
       totalPayableAmount: Number(totalPayableAmount || items.reduce((acc: number, curr: any) => acc + (curr.qty * curr.rate), 0)),
       amountInWords: amountInWords.trim(),
       templateName: templateName || 'template1',

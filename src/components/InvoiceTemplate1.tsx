@@ -29,6 +29,7 @@ interface InvoiceTemplateProps {
   customer: Customer;
   items: InvoiceItem[];
   totalAmount: number;
+  discount?: number;
   totalPayableAmount: number;
   amountInWords: string;
   paymentOptions?: PaymentOptions;
@@ -45,6 +46,7 @@ export const InvoiceTemplate1: React.FC<InvoiceTemplateProps> = ({
   customer,
   items,
   totalAmount,
+  discount = 0,
   totalPayableAmount,
   amountInWords,
   paymentOptions = {
@@ -148,6 +150,12 @@ export const InvoiceTemplate1: React.FC<InvoiceTemplateProps> = ({
       <div className="rds-summary-section">
         <h3>Payment Summary</h3>
         <ul className="rds-summary-list">
+          {discount > 0 && (
+            <>
+              <li><strong>Subtotal:</strong> {totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</li>
+              <li><strong>Discount:</strong> {discount.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</li>
+            </>
+          )}
           <li><strong>Total Payable Amount:</strong> {totalPayableAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</li>
           {paymentStatus === 'Due' ? (
             <>
@@ -191,53 +199,13 @@ export const InvoiceTemplate1: React.FC<InvoiceTemplateProps> = ({
 
       {/* Line art sketch at bottom right */}
       <div className="rds-footer-illustration">
-        <svg viewBox="0 0 400 130" fill="none" className="rds-furniture-svg" xmlns="http://www.w3.org/2000/svg">
-          {/* Lounge Chair */}
-          <path d="M40 95L25 125" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M60 95L75 125" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M30 115L35 125" stroke="#555" strokeWidth="1.5" />
-          <path d="M55 115L50 125" stroke="#555" strokeWidth="1.5" />
-
-          {/* Chair cushion seat */}
-          <path d="M20 75C20 65 30 60 45 60C60 60 70 65 70 75C70 85 65 95 45 95C25 95 20 85 20 75Z" fill="#fff" stroke="#333" strokeWidth="1.8" />
-          {/* Chair Backrest */}
-          <path d="M25 62C22 50 25 25 40 25C50 25 58 45 55 62" stroke="#333" strokeWidth="1.8" fill="none" strokeLinecap="round" />
-          {/* Back cushion details */}
-          <path d="M35 32C32 42 34 52 36 58" stroke="#777" strokeWidth="1" strokeLinecap="round" />
-          <path d="M45 32C43 42 44 52 45 58" stroke="#777" strokeWidth="1" strokeLinecap="round" />
-
-          {/* Side Table with vase */}
-          <path d="M110 95L100 125" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M130 95L140 125" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M120 95L120 125" stroke="#555" strokeWidth="1" strokeLinecap="round" />
-
-          {/* Table Top */}
-          <ellipse cx="120" cy="95" rx="25" ry="5" fill="#fff" stroke="#333" strokeWidth="1.8" />
-
-          {/* Small Vase & Plants */}
-          <path d="M116 93V85C116 82 124 82 124 85V93H116Z" fill="#eee" stroke="#333" strokeWidth="1.2" />
-          {/* Plant Stems and Leaves */}
-          <path d="M120 82C118 72 108 70 108 70" stroke="#333" strokeWidth="1" strokeLinecap="round" />
-          <path d="M120 82C123 74 132 72 132 72" stroke="#333" strokeWidth="1" strokeLinecap="round" />
-          <path d="M120 82C120 70 120 65 120 65" stroke="#333" strokeWidth="1" strokeLinecap="round" />
-          {/* Leaves shapes */}
-          <path d="M108 70C110 68 114 69 114 72C111 74 109 73 108 70Z" fill="#ddd" stroke="#333" strokeWidth="0.8" />
-          <path d="M132 72C130 70 126 71 126 74C129 76 131 75 132 72Z" fill="#ddd" stroke="#333" strokeWidth="0.8" />
-          <path d="M120 65C118 63 118 59 120 59C122 59 122 63 120 65Z" fill="#ddd" stroke="#333" strokeWidth="0.8" />
-
-          {/* Modern Floor Lamp */}
-          <path d="M175 125L170 125" stroke="#333" strokeWidth="3" strokeLinecap="round" />
-          {/* Lamp Stand tripod */}
-          <path d="M172 125L185 45" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M160 125L185 45" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          <path d="M185 125L185 45" stroke="#555" strokeWidth="1.5" strokeLinecap="round" />
-          {/* Lamp Shade */}
-          <path d="M170 45L200 45L205 20L165 20L170 45Z" fill="#fff" stroke="#333" strokeWidth="1.8" strokeLinejoin="round" />
-          {/* Bulb glow dashes */}
-          <path d="M185 49V55" stroke="#e07a5f" strokeWidth="1.2" strokeLinecap="round" />
-          <path d="M175 51L171 55" stroke="#e07a5f" strokeWidth="1.2" strokeLinecap="round" />
-          <path d="M195 51L199 55" stroke="#e07a5f" strokeWidth="1.2" strokeLinecap="round" />
-        </svg>
+        <Image 
+          src="/furniture.png" 
+          alt="Furniture Illustration" 
+          width={280}
+          height={280}
+          style={{ objectFit: 'contain', objectPosition: 'bottom right', mixBlendMode: 'multiply' }}
+        />
       </div>
 
       {/* Black footer strip */}

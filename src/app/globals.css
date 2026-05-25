@@ -550,14 +550,16 @@ h6 {
 .rds-invoice-container {
   width: 100%;
   max-width: 800px;
-  min-height: 1120px; /* Perfect A4 ratio for 800px width with a small safe margin to prevent extra pages */
+  min-height: 1120px;
+  /* Perfect A4 ratio for 800px width with a small safe margin to prevent extra pages */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
   background: #fff;
   color: #111;
-  padding: 0 40px 100px; /* Increased bottom padding to accommodate absolute footer */
+  padding: 0 40px 100px;
+  /* Increased bottom padding to accommodate absolute footer */
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   font-family: 'Inter', sans-serif;
@@ -790,7 +792,7 @@ h6 {
 
 .rds-footer-illustration {
   position: absolute;
-  bottom: 30px;
+  bottom: -45px;
   right: 20px;
   width: 280px;
   opacity: 0.85;
@@ -836,14 +838,16 @@ h6 {
 .partner-invoice-container {
   width: 100%;
   max-width: 800px;
-  min-height: 1120px; /* Perfect A4 ratio with safe margin */
+  min-height: 1120px;
+  /* Perfect A4 ratio with safe margin */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 0 auto;
   background: #fff;
   color: #111;
-  padding: 0 40px 100px; /* Increased bottom padding */
+  padding: 0 40px 100px;
+  /* Increased bottom padding */
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   font-family: 'Inter', sans-serif;
@@ -1122,13 +1126,15 @@ h6 {
 }
 
 .invoice-badge.paid {
-  color: #10b981; /* Green */
+  color: #10b981;
+  /* Green */
   background: rgba(16, 185, 129, 0.08);
   border-color: #10b981;
 }
 
 .invoice-badge.due {
-  color: #f97316; /* Orange */
+  color: #f97316;
+  /* Orange */
   background: rgba(249, 115, 22, 0.08);
   border-color: #f97316;
 }
@@ -1238,7 +1244,7 @@ h6 {
 
   .rds-footer-illustration {
     position: fixed !important;
-    bottom: 8mm !important;
+    bottom: -45px !important;
     right: 20mm !important;
     width: 280px !important;
     opacity: 0.9 !important;
@@ -1444,11 +1450,23 @@ h6 {
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalScaleIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

@@ -68,6 +68,7 @@ export default function CreateInvoice() {
 
   const [paymentStatus, setPaymentStatus] = useState<'Paid' | 'Due'>('Due');
   const [paidAmount, setPaidAmount] = useState<number>(0);
+  const [discount, setDiscount] = useState<number>(0);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -134,15 +135,16 @@ export default function CreateInvoice() {
 
   // 2. Calculations
   const grandTotal = items.reduce((acc, curr) => acc + curr.amount, 0);
-  const grandTotalInWords = numberToWords(grandTotal);
-  const dueAmount = paymentStatus === 'Paid' ? 0 : Math.max(0, grandTotal - paidAmount);
+  const totalPayableAmount = Math.max(0, grandTotal - discount);
+  const grandTotalInWords = numberToWords(totalPayableAmount);
+  const dueAmount = paymentStatus === 'Paid' ? 0 : Math.max(0, totalPayableAmount - paidAmount);
 
-  // Sync paidAmount with grandTotal when marked as Paid
+  // Sync paidAmount with totalPayableAmount when marked as Paid
   useEffect(() => {
     if (paymentStatus === 'Paid') {
-      setPaidAmount(grandTotal);
+      setPaidAmount(totalPayableAmount);
     }
-  }, [paymentStatus, grandTotal]);
+  }, [paymentStatus, totalPayableAmount]);
 
   // 3. Customer handlers
   const handleSelectCustomer = (cust: SavedCustomer) => {
@@ -229,13 +231,14 @@ export default function CreateInvoice() {
       },
       items,
       totalAmount: grandTotal,
-      totalPayableAmount: grandTotal,
+      discount,
+      totalPayableAmount,
       amountInWords: grandTotalInWords,
       templateName,
       paymentOptions,
       signeeName,
       signeeRole,
-      paidAmount: paymentStatus === 'Paid' ? grandTotal : paidAmount,
+      paidAmount: paymentStatus === 'Paid' ? totalPayableAmount : paidAmount,
       dueAmount,
       paymentStatus
     };
@@ -538,9 +541,25 @@ export default function CreateInvoice() {
               </button>
 
               <div className="totals-panel">
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '10px', gap: '15px' }}>
+                  <span style={{ fontWeight: 600, color: 'var(--text-secondary)' }}>Subtotal:</span>
+                  <span style={{ fontWeight: 600, width: '120px', textAlign: 'right' }}>{grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '10px', gap: '15px' }}>
+                  <span style={{ fontWeight: 600, color: 'var(--text-secondary)' }}>Discount (BDT):</span>
+                  <input
+                    type="number"
+                    className="form-input text-right"
+                    min="0"
+                    step="any"
+                    value={discount || ''}
+                    onChange={e => setDiscount(Number(e.target.value))}
+                    style={{ width: '120px', padding: '5px 10px' }}
+                  />
+                </div>
                 <div className="total-row grand">
                   <span>Total Payable:</span>
-                  <span style={{ color: '#60a5fa' }}>{grandTotal.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</span>
+                  <span style={{ color: '#60a5fa' }}>{totalPayableAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })} BDT</span>
                 </div>
 
                 {/* Payment Status controls */}

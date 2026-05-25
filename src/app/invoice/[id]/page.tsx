@@ -23,6 +23,7 @@ interface Invoice {
     amount: number;
   }>;
   totalAmount: number;
+  discount?: number;
   totalPayableAmount: number;
   amountInWords: string;
   templateName: 'template1' | 'template2';
@@ -286,6 +287,7 @@ export default function ViewInvoice() {
             customer={invoice.customer}
             items={invoice.items}
             totalAmount={invoice.totalAmount}
+            discount={invoice.discount}
             totalPayableAmount={invoice.totalPayableAmount}
             amountInWords={invoice.amountInWords}
             paymentOptions={invoice.paymentOptions}
@@ -302,6 +304,7 @@ export default function ViewInvoice() {
             customer={invoice.customer}
             items={invoice.items}
             totalAmount={invoice.totalAmount}
+            discount={invoice.discount}
             totalPayableAmount={invoice.totalPayableAmount}
             amountInWords={invoice.amountInWords}
             paymentOptions={invoice.paymentOptions}
